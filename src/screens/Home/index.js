@@ -5,6 +5,7 @@ import styles from "./styles.js";
 import Title from "../../components/Title/index.js";
 import Categories from "../../components/Categories/index.js";
 import RecipeCard from "../../components/RecipeCard/index.js";
+import Card from "../../components/Card/index.js";
 
 const Home = ({ navigation }) => {
   return (
@@ -34,6 +35,25 @@ const Home = ({ navigation }) => {
         categories={["All", "Trending"]}
         selectedCategory={"All"}
         onCategoryPress={() => {}}
+      />
+
+      <FlatList
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        style={{ marginHorizontal: -24 }}
+        data={[1, 2, 3, 4, 5]}
+        renderItem={({ index }) => (
+          <Card
+            style={index === 0 ? { marginLeft: 24 } : {}}
+            title="Steak and tomato sauce and bulgur rice"
+            time="20 mins"
+            author={{
+              name: "Gustavo Morais",
+              image:
+                "https://cdn.pixabay.com/photo/2022/11/16/14/06/christmas-7596084_960_720.png",
+            }}
+          />
+        )}
       />
     </SafeAreaView>
   );
