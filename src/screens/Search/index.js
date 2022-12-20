@@ -1,11 +1,13 @@
 import React from "react";
 import { Text, SafeAreaView } from "react-native";
+import Input from "../../components/Input/index.js";
+import RecipeCard from "../../components/RecipeCard/index.js";
 import styles from "./styles.js";
 
 const Search = () => {
   return (
-    <SafeAreaView style={styles.background}>
-      <Text>Search</Text>
+    <SafeAreaView style={styles.container}>
+      <Input />
     </SafeAreaView>
   );
 };

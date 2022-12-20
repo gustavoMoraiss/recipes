@@ -8,13 +8,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingHorizontal: 10,
     borderWidth: 1,
-    borderColor: colors.lightGray,
+    borderColor: colors.lightGrey,
     paddingVertical: 12,
     marginVertical: 16,
   },
   input: {
     color: colors.black,
     fontSize: 12,
+    flex: 1,
   },
   icon: {
     width: 24,
