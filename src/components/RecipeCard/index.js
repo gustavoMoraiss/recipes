@@ -12,7 +12,7 @@ const RecipeCard = ({ title, style, image, author, rating, time }) => {
             {title}
           </Text>
 
-          <Rating rating={4.9} />
+          <Rating rating={4} />
         </View>
 
         <Image
