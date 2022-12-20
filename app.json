@@ -1,6 +1,7 @@
 {
   "expo": {
     "name": "Recipes",
+    "jsEngine": "hermes",
     "slug": "recipesApp",
     "version": "1.0.0",
     "orientation": "portrait",

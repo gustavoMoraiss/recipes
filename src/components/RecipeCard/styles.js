@@ -12,7 +12,6 @@ const styles = StyleSheet.create({
     marginBottom: 32,
     marginTop: 46,
     marginRight: 16,
-
     // iOS
     shadowColor: "#000",
     shadowOffset: {
@@ -49,6 +48,7 @@ const styles = StyleSheet.create({
     height: 25,
     borderRadius: 20,
     marginRight: 8,
+    backgroundColor: colors.lightGrey,
   },
   timerIcon: {
     width: 17,
