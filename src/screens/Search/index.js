@@ -1,13 +1,51 @@
-import React from "react";
-import { Text, SafeAreaView } from "react-native";
+import React, { useContext, useEffect, useState } from "react";
+import { Text, SafeAreaView, FlatList } from "react-native";
 import Input from "../../components/Input/index.js";
 import RecipeCard from "../../components/RecipeCard/index.js";
 import styles from "./styles.js";
+import { RecipesContext } from "../../../App.js";
+import Card from "../../components/Card/index.js";
 
 const Search = () => {
+  const { recipes } = useContext(RecipesContext);
+  const [filteredRecipes, setFilteredRecipes] = useState([]);
+  const [keyword, setKeyword] = useState("");
+
+  useEffect(() => {
+    if (keyword?.length >= 2) {
+      const filteredItems = recipes?.filter((rec) =>
+        rec?.name?.toLowerCase()?.includes(keyword?.toLowerCase())
+      );
+      setFilteredRecipes(filteredItems);
+    } else {
+      setFilteredRecipes([]);
+    }
+  }, [keyword]);
+
   return (
     <SafeAreaView style={styles.container}>
-      <Input />
+      <Input autoFocus onChangeText={setKeyword} value={keyword} />
+      <FlatList
+        numColumns={2}
+        style={{ flexGrow: 1 }}
+        showsHorizontalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
+        keyExtractor={(item) => String(item?.id)}
+        data={filteredRecipes}
+        renderItem={({ item, index }) => (
+          <Card
+            // style={index === filteredRecipes.lenght - 1 ? { marginLeft: 24 } : {}}
+            title={item?.name}
+            image={item?.thumbnail_url}
+            serving={item?.num_servings}
+            rating={item?.user_ratings?.score}
+            author={{
+              name: item?.credits[0]?.name,
+              image: item?.credits[0]?.image_url,
+            }}
+          />
+        )}
+      />
     </SafeAreaView>
   );
 };

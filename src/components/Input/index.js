@@ -3,7 +3,7 @@ import { Image, Pressable, TextInput, View } from "react-native";
 import colors from "../../constants/colors.js";
 import styles from "./styles.js";
 
-const Input = ({ placeholder, showSearchIcon, pressable, onPress, style }) => {
+const Input = ({ showSearchIcon, pressable, onPress, style, ...props }) => {
   const renderInput = () => {
     return (
       <View style={[styles.container, style]}>
@@ -14,9 +14,10 @@ const Input = ({ placeholder, showSearchIcon, pressable, onPress, style }) => {
           />
         ) : null}
         <TextInput
+          {...props}
+          onFocus={onPress}
           style={styles.input}
           placeholderTextColor={colors.lightGrey}
-          placeholder={placeholder}
         />
       </View>
     );
