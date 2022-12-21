@@ -6,7 +6,7 @@ import styles from "./styles.js";
 import { RecipesContext } from "../../../App.js";
 import Card from "../../components/Card/index.js";
 
-const Search = () => {
+const Search = ({ navigation }) => {
   const { recipes } = useContext(RecipesContext);
   const [filteredRecipes, setFilteredRecipes] = useState([]);
   const [keyword, setKeyword] = useState("");
@@ -22,6 +22,10 @@ const Search = () => {
     }
   }, [keyword]);
 
+  const onDetailScreen = (item) => {
+    navigation.navigate("RecipeDetails", { item });
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <Input autoFocus onChangeText={setKeyword} value={keyword} />
@@ -34,7 +38,7 @@ const Search = () => {
         data={filteredRecipes}
         renderItem={({ item, index }) => (
           <Card
-            // style={index === filteredRecipes.lenght - 1 ? { marginLeft: 24 } : {}}
+            onPress={() => onDetailScreen(item)}
             title={item?.name}
             image={item?.thumbnail_url}
             serving={item?.num_servings}

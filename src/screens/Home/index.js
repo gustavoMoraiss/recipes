@@ -26,6 +26,10 @@ const Home = ({ navigation }) => {
     setTags(tagsData);
   }, [recipes]);
 
+  const onDetailScreen = (item) => {
+    navigation.navigate("RecipeDetails", { item });
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <Input pressable onPress={() => navigation.navigate("Search")} />
@@ -44,6 +48,7 @@ const Home = ({ navigation }) => {
               time={item?.cook_time_minutes}
               image={item?.thumbnail_url}
               rating={item?.user_ratings?.score}
+              onPress={() => onDetailScreen(item)}
               author={{
                 name: item?.credits[0]?.name,
                 image: item?.credits[0]?.image_url,
@@ -72,6 +77,7 @@ const Home = ({ navigation }) => {
             image={item?.thumbnail_url}
             serving={item?.num_servings}
             rating={item?.user_ratings?.score}
+            onPress={() => onDetailScreen(item)}
             author={{
               name: item?.credits[0]?.name,
               image: item?.credits[0]?.image_url,

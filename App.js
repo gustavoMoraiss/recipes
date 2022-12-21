@@ -6,6 +6,7 @@ import Home from "./src/screens/Home";
 import Search from "./src/screens/Search";
 import React, { useEffect, useState } from "react";
 import { getRecipeList } from "./src/http";
+import RecipeDetails from "./src/screens/RecipeDetails";
 
 const Stack = createStackNavigator();
 export const RecipesContext = React.createContext();
@@ -33,7 +34,7 @@ export default function App() {
 
   useEffect(() => {
     (async () => {
-      const rec = await handleRecipesFetch(null, "35");
+      const rec = await handleRecipesFetch(null, "25");
       setRecipes(rec);
       const healthyRec = await handleRecipesFetch("healthy", "5");
       setHealthyRecipes(healthyRec);
@@ -76,6 +77,14 @@ export default function App() {
               component={Search}
               options={{
                 headerLeft: (props) => <BackButton {...props} />,
+              }}
+            />
+            <Stack.Screen
+              name="RecipeDetails"
+              component={RecipeDetails}
+              options={{
+                headerLeft: (props) => <BackButton {...props} />,
+                title: "",
               }}
             />
           </Stack.Navigator>
