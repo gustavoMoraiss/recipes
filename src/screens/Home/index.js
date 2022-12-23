@@ -13,6 +13,7 @@ const Home = ({ navigation }) => {
   const { healthyRecipes } = useContext(HealthyRecipesContext);
   const [tags, setTags] = useState([]);
   const [selectedTag, setSelectedTag] = useState();
+  const [filteredRecipes, setfilteredRecipes] = useState(recipes);
 
   useEffect(() => {
     const tagsData = [];
@@ -25,6 +26,18 @@ const Home = ({ navigation }) => {
     });
     setTags(tagsData);
   }, [recipes]);
+
+  useEffect(() => {
+    if (selectedTag) {
+      const filteredItems = recipes?.filter((rec) => {
+        const tag = rec?.tags?.find((t) => t?.name === selectedTag);
+        return !!tag;
+      });
+      setfilteredRecipes(filteredItems);
+    } else {
+      setfilteredRecipes(recipes);
+    }
+  }, [selectedTag, recipes]);
 
   const onDetailScreen = (item) => {
     navigation.navigate("RecipeDetails", { item });
@@ -69,7 +82,7 @@ const Home = ({ navigation }) => {
         showsHorizontalScrollIndicator={false}
         style={{ marginHorizontal: -24 }}
         keyExtractor={(item) => String(item?.id)}
-        data={recipes}
+        data={filteredRecipes}
         renderItem={({ item, index }) => (
           <Card
             style={index === 0 ? { marginLeft: 24 } : {}}
