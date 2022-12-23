@@ -33,6 +33,22 @@ const styles = StyleSheet.create({
     fontSize: 12,
     textTransform: "capitalize",
   },
+  instructionsRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    paddingVertical: 12,
+  },
+  index: {
+    color: colors.grey2,
+    fontSize: 20,
+    marginRight: 16,
+    fontWeight: "bold",
+  },
+  instructionText: {
+    color: colors.black,
+    fontSize: 14,
+    flex: 1,
+  },
 });
 
 export default styles;
