@@ -6,22 +6,12 @@ const { width } = Dimensions.get("window");
 const styles = StyleSheet.create({
   container: {
     borderRadius: 10,
-    backgroundColor: colors.white,
+    backgroundColor: "rgba(217, 217, 217, 0.45)",
     padding: 10,
     width: width * 0.4,
     marginBottom: 32,
-    marginTop: 46,
+    marginTop: 70,
     marginRight: 16,
-    // iOS
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 4,
-    },
-    shadowOpacity: 0.32,
-    shadowRadius: 5.46,
-    // Android
-    elevation: 4,
   },
   title: {
     fontSize: 14,
